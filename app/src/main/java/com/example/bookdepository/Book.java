@@ -11,7 +11,10 @@ public class Book {
     private boolean mReaded;
 
     public  Book(){
-        mId = UUID.randomUUID();
+        this(UUID.randomUUID());
+    }
+    public  Book(UUID id){
+        mId = id;
         mDate = new Date();
     }
 
@@ -40,5 +43,11 @@ public class Book {
 
     public void setReaded(boolean readed) {
         mReaded = readed;
+    }
+
+    public void setTime(Date time)
+    {
+        mDate.setHours(time.getHours());
+        mDate.setMinutes(time.getMinutes());
     }
 }
