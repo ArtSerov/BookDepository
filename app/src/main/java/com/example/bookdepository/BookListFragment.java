@@ -1,6 +1,7 @@
 package com.example.bookdepository;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -28,6 +29,8 @@ public class BookListFragment extends Fragment {
 
     private static final String SAVED_SUBTITLE_VISIBLE = "subtitle";
     private RecyclerView mBookRecyclerView;
+    private static final int REQUEST_PERMISSION_READ_EXTERNAL_STORAGE = 4;
+    static boolean isReadGranted = false;
     private BookAdapter mAdapter;
     private int mPosition;
     private boolean mSubtitleVisible;
@@ -36,6 +39,7 @@ public class BookListFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        requestPermissions(new String[]{"android.permission.READ_EXTERNAL_STORAGE"}, REQUEST_PERMISSION_READ_EXTERNAL_STORAGE);
     }
 
     @Override
@@ -174,5 +178,15 @@ public class BookListFragment extends Fragment {
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(SAVED_SUBTITLE_VISIBLE,mSubtitleVisible);
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode == REQUEST_PERMISSION_READ_EXTERNAL_STORAGE)
+        {
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                isReadGranted = true;
+            else
+                isReadGranted = false;
+        }
     }
 }

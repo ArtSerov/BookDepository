@@ -5,12 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Environment;
 import android.util.Log;
 
 import com.example.bookdepository.database.BookBaseHelper;
 import com.example.bookdepository.database.BookCursorWrapper;
 import com.example.bookdepository.database.BookDbSchema;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -97,6 +99,16 @@ public class BookLab {
         values.put(BookDbSchema.BookTable.Cols.DATE, book.getDate().getTime());
         values.put(BookDbSchema.BookTable.Cols.READED, book.isReaded());
         return values;
+    }
+
+    public File getPhotoFile(Book book)
+    {
+        File externalFilesDir = mContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        if(externalFilesDir == null)
+        {
+            return null;
+        }
+        return new File(externalFilesDir, book.getPhotoFilename());
     }
 
 }

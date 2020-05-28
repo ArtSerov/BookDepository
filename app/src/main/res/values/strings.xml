@@ -22,6 +22,17 @@
     </plurals>
 
     <string name="book_report_text">Отправить отчет о прочтении</string>
+    <string name="book_report">%1$s Книга была запланирована к прочтению %2$s и %3$s</string>
+    <string name="book_report_readed">Книга прочитана</string>
+    <string name="book_report_unreaded">Книга не прочитана</string>
+    <string name="book_report_subject">BookDepository отчет о прочтении</string>
+    <string name="send_report">Отправить отчсет о прочтении через</string>
+
+    <string name="book_gallery_subject">BookDepository open image</string>
+    <string name="book_gallery">Open image</string>
+    <string name="request_read_external_storage_permission">Grant storage permission to open the image from the gallery.</string>
+    <string name="no_photo">No image</string>
+    <string name="todo">TODO</string>
     
 </resources>
 

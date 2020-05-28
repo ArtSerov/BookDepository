@@ -50,4 +50,8 @@ public class Book {
         mDate.setHours(time.getHours());
         mDate.setMinutes(time.getMinutes());
     }
+
+    public String getPhotoFilename(){
+        return "IMG_" + getId().toString() + ".jpg";
+    }
 }
